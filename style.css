@@ -1,0 +1,183 @@
+*{
+    margin: 0px;
+    padding:0px;
+}
+img{
+    background-color: black;
+    margin-left: 450px;
+    margin-bottom: 10px;
+    color: grey;
+   
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+.title{
+    margin-bottom: 40px;
+    margin-left: 20px;
+}
+.btn{
+    margin-bottom: 30px;
+    margin-left: 550px;    
+}
+.btn button:hover{
+transform: scale(1.1,1.1);
+background-color: blue;  
+}
+.btn button{
+    border-radius: 15px;
+    width: 90px;
+    border: none;
+    padding: 10px 15px;
+  transition: 1s;
+}
+.icon{
+margin-bottom: 25px;
+margin-right: 35px;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.date{
+    margin-top: 90px;
+    margin-left: 200px;
+}
+.euro{
+    margin-top: 90px;
+    margin-right: 600px;
+}
+.box{
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+}
+.box1{
+    box-shadow: 10px 10px 10px 0px;
+    width: 30%;
+    height: 450px;
+    margin-top: 70px;
+    margin-left: 200px;
+    border-radius: 15px;
+}
+.cl1{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+}
+.dep{
+    display: flex;
+    
+}
+.dep p{
+    margin-left: 20px;    
+}
+.dep button{
+padding: 5px 10px;
+border-radius: 10px;
+border: none;
+background-color: greenyellow;
+}
+.cl2{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+}
+.with{
+    display: flex;
+    
+}
+.with p{
+    margin-left: 20px;    
+}
+.with button{
+padding: 5px 10px;
+border-radius: 10px;
+border: none;
+background-color: red;
+}
+.box2{
+    margin-top: 80px;
+}
+.parent1{
+ margin-bottom: 10px;
+    margin-left: 50px;
+    background-color: orange;
+    height: 100px;
+    padding: 20px;
+}
+.lbl1{
+    display: flex;
+  justify-content: center;
+  margin-left: 20px;
+}
+.input1{
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+}
+
+.lbl1{
+    display: flex;
+    justify-content: space-between;
+}
+div i{
+    background-color: beige;
+}
+.parent2{
+    margin-bottom: 10px;
+    margin-left: 50px;
+    background-color:green;
+    height: 100px;
+    padding: 20px;
+}
+
+
+div i{
+    background-color: beige;
+}
+.parent3{
+    margin-bottom: 10px;
+    margin-left: 50px;
+    background-color: red;
+    height: 100px;
+    padding: 20px;
+}
+.lbl3{
+    display: flex;
+  justify-content: center;
+  margin-left: 20px;
+}
+.input3{
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+}
+
+.lbl3{
+    display: flex;
+    justify-content: space-between;
+}
+div i{
+    background-color: beige;
+}
+footer{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    top: 60px;
+}
