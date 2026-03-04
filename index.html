@@ -1,132 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
-</head>
-<body>
-    <div class="header">
-         <div class="title">
-         <h2>Log in get started</h2>
-         </div>
-         <div class="image">
-        <img src="./image/icon.png" alt=""height=50px>
-        </div>
-        <div class="btn">
-        <button>user</button>
-        <button>pin</button>
-        
-        </div>
-        <div class="icon">
-            <i class="fa-solid fa-arrow-right-long"></i>
-        </div>
-    </div>
-    <div class="main">
-<div class="date">
-    <h1>Current balance </h1>
-    <h3>as of 05/03/2037</h3>
-</div>
-<div class="euro">
-    <h1>0000£</h1>
-</div>
-    </div>
-    <div class="box">
-        <div class="box1">
-        <div class="cl1">
-            <div class="dep">
-                <button>Deposit</button>
-                <p>3days ago</p>
-            </div>
-           <div class="p1">
-             <p>4000£</p>
-           </div>
-            </div>
-            <hr>
-            <div class="cl2">
-            <div class="with">
-            <button>withdrawal</button>
-            <p>24/01/2037</p>
-            </div>
-                
-                <div class="p2">
-            <p>-378£</p>
-            </div>
-            </div>
-            <hr>
-        </div>
-        <div class="box2">
-            <div class="parent1">
-             <h2>transfer money</h2>
-             <div class="input1">
-            
-                   <input type="text">
-                     
-                     
-                   <input type="text">
-                   
-                   
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <h2>Log in get started</h2>
+      </div>
 
-                   <div>
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                   </div>
-                
-             </div>
-             <br>
-             <div class="lbl1">
-                <label for="">transfert to</label>
-                <label for="">amount</label>
-             </div>   
-            </div>
-            <div class="parent2">
-             <h2>request loan</h2>
-            <div class="input2">
-            <input type="text">
-            <i class="fa-solid fa-arrow-right-long"></i>
-            <div>
-            
-            </div>  
-             </div>
-             <br>
-             <div class="lbl2">
-                
-                <label for="">amount</label>
-             </div>
-              
-            </div>
-            <div class="parent3">
-             <h2>close account</h2>
-             <div class="input3">
-            
-                   <input type="text">
-                     
-                     
-                   <input type="text">
-                   
-                   
+      <img src="./image/logo.png" alt="" height="50px" />
 
-                   <div>
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                   </div>
-                
-             </div>
-             <br>
-             <div class="lbl3">
-                <label for="">conform user</label>
-                <label for="">confirm pin</label>
-             </div>   
-            </div>
+      <div class="btn">
+        <input class="text" type="text" placeholder="user" />
+        <input class="number" type="number" placeholder="pin" />
+        <sapn class="icon">
+          <i class="fa-solid fa-arrow-right-long"></i>
+        </sapn>
+      </div>
+    </header>
+    <main>
+      <section class="main-cur">
+        <div class="current">
+          <h3>current balance</h3>
+          <p>24/02/2025</p>
         </div>
-    </div>
-    <footer>
-        <h3>in 0000£</h3>
-        <h3>out 0000£</h3>
-        <h3>interest 0000£</h3>
-        <h3>sort</h3>
-        <h3>you will be logged out i n 500</h3>
-    </footer>
-</body>
+        <h3 class="sumdep">00000<i class="fa-solid fa-euro-sign"></i></h3>
+      </section>
+      <div class="box">
+        <div class="boxleft">
+          <div class="deposit-container">
+            <div class="deposit-info">
+              <span class="deposit"> 2 deposit</span>
+              <span class="deposit-day"> 3 days ago</span>
+            </div>
+            <div class="deposit-montant">
+              <h3>4000<i class="fa-solid fa-euro-sign"></i></h3>
+            </div>
+          </div>
+
+          <div class="withdraw-container">
+            <div class="withdraw-info">
+              <span class="withdraw"> i withdraw</span>
+              <span class="withdraw-day">24/02/2026</span>
+            </div>
+            <div class="withdraw-montant">
+              <h3>-378<i class="fa-solid fa-euro-sign"></i></h3>
+            </div>
+          </div>
+        </div>
+        <div class="boxright">
+          <form class="transfert">
+            <h3 style="background: none; text-transform: capitalize">
+              transfert money
+            </h3>
+            <input class="transfert-input1" type="text" />
+            <label class="transfert-to" for="">transfert to</label>
+            <input class="transfert-input2" type="number" />
+            <label class="transfert-amount" for="">amount</label>
+            <button class="fleche1">
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </form>
+          <form class="request">
+            <h3 style="background: none; text-transform: capitalize">
+              request loan
+            </h3>
+            <input class="request-input" type="number" />
+            <label class="request-amount" for="">amount</label>
+            <button class="fleche2">
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </form>
+          <form class="close">
+            <h3 style="background: none; text-transform: capitalize">
+              transfert money
+            </h3>
+            <input class="close-input1" type="text" />
+            <label class="confirm-user" for="">confirm user</label>
+            <input class="close-input2" type="number" />
+            <label class="confirm-pin" for="">confirm pin</label>
+            <button class="fleche3">
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer">
+          <span  > in </span>
+          <span class="in">0000<i class="fa-solid fa-euro-sign"></i></span>
+          <span > out </span>
+          <span class="out">0000<i class="fa-solid fa-euro-sign"></i></span>
+          <span > interested </span>
+          <span class="interested"
+            >0000<i class="fa-solid fa-euro-sign"></i
+          ></span>
+        </div>
+
+        <p><i class="fa-solid fa-arrow-down"></i>sort</p>
+        <span
+          >you will logged out in
+          <span class="tim">05:00</span>
+        </span>
+      </footer>
+      
+    </main>
+    <script src="app.js"></script>
+  </body>
 </html>
