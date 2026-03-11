@@ -40,10 +40,28 @@ const balance = document.querySelector(".sumdep");
 const somdep=document.querySelector(".in")
 const somwith=document.querySelector(".out")
 const somint=document.querySelector(".interested")
+const userinput=document.querySelector(".user")
+const pininput=document.querySelector(".pin")
+const welcome=document.querySelector(".title")
+const app=document.querySelector("main")
+//////// transfert amount
+const transfertuser=document.querySelector(".transfert-input1")
+const amountuser=document.querySelector(".transfert-input2")
+const btntransfert=document.querySelector(".fleche1")
+////////request   amount
+const inputamount=(document.querySelector(".request-input"))
+const btnamount=document.querySelector(".fleche2")
+////////close account
+const closeinput=document.querySelector(".close-input1")
+const confirminput=document.querySelector(".close-input2")
+const btnclose=document.querySelector(".fleche3")
 
-const dipalyMovements = function (arr) {
+
+
+
+const dipalyMovements = function (acc) {
   box.innerHTML = "";
-  arr.forEach((mov, i) => {
+  acc.movements.forEach((mov, i) => {
     let type = mov > 0 ? "deposit" : "withdraw";
     let html = `
            <div class="${type}-container">
@@ -59,7 +77,7 @@ const dipalyMovements = function (arr) {
     box.insertAdjacentHTML("beforeend", html);
   });
 };
-dipalyMovements(account2.movements);
+// dipalyMovements(account2.movements);
 
 
 
@@ -67,12 +85,13 @@ dipalyMovements(account2.movements);
 
 
 /////balance
-const displaybalance = function (array) {
-  const result = array.reduce((acc, ele) => acc + ele, 0);
+const displaybalance = function (acc) {
+  const result = acc.movements.reduce((acc, ele) => acc + ele, 0);
   balance.textContent = `${result} €`;
+  currentaccount.credit=result
 };
 
-displaybalance(account2.movements);
+// displaybalance(account2.movements);
 
 
 
@@ -93,27 +112,25 @@ console.log(accounts)
 
 
 
-/////in
-const int=[5000, 3400, -150, -790, -3210, 1000, 8500, -30]
-console.log(int)
-const result1=int.filter((ele)=>ele>0).reduce((acc,ele)=>acc+ele,0)
-console.log(result1)
-somdep.textContent=`${result1} €`;
-
-
-/////out
-const out=[5000, 3400, -150, -790, -3210, 1000, 8500, -30]
-console.log(out)
-const result2=out.filter((ele)=>ele<0).reduce((acc,ele)=>acc+ele,0)
-console.log(result2)
-somwith.textContent=`${Math.abs(result2)} €`;
 
 
 
-/////intersted
-const intersted=[5000, 3400, -150, -790, -3210, 1000, 8500, -30]
-console.log(intersted)
-const result3=intersted.filter((ele)=>ele>0).map((deposit,i,arr)=>{
+const displaysomme=function(acc){
+
+
+
+  const result1=acc.movements.filter((ele)=>ele>0).reduce((acc,ele)=>ele+acc,0)
+  console.log(result1)
+  somdep.textContent=`${result1} € `
+
+
+  const result2=acc.movements.filter((ele)=>ele<0).reduce((acc,ele)=>ele+acc,0)
+  console.log(result2)
+  somwith.textContent=`${Math.abs(result2)} € `
+
+
+
+  const result3=acc.movements.filter((ele)=>ele>0).map((deposit,i,arr)=>{
   console.log("comees from filter :" ,arr)
   return (deposit*1.5)/100
 }).reduce((acc,ele ,i,arr)=>{
@@ -124,46 +141,219 @@ console.log(result3)
 somint.textContent=`${result3} €`;
 
 
-
-
-
-
-
-
-
-
-
-
-
-const displaymessage=function(message){
-document.querySelector(".title").textContent=message
 }
 
+// displaysomme(account2.movements);
+
+
+
+
+///// hedhi hiya lkhedma s7i7a
+let currentaccount;
 document.querySelector(".icon").addEventListener("click",function(){
-var input1=document.querySelector(".text").value
-var input2=document.querySelector(".number").value
-if(!input1 && !input2){
-displaymessage("not a text")
-document.querySelector(".title").style.fontSize = "40px";
-}else if(input1==account1.username && input2==account1.pin){
-displaymessage("welcome Mark Shmedtman ")
-document.querySelector(".title").style.fontSize = "40px";
-}else if(input1==account2.username && input2==account2.pin){
-displaymessage("welcome jessica davis ").style.fontSize = "70px";
-}else if(input1==account3.username && input2==account3.pin){
-displaymessage("welcome Park Thomas Williams ")
-document.querySelector(".title").style.fontSize = "40px";
-}else if(input1==account4.username && input2==account4.pin){
-displaymessage("welcome Sarah Smith ")
-document.querySelector(".title").style.fontSize = "40px";
+
+if(currentaccount=accounts.find((acc)=>acc.username===userinput.value && acc.pin===Number(pininput.value))){
+console.log("current account",currentaccount)
+
+welcome.textContent=`welcome ${currentaccount.owner.split(" ")[0]}`
+document.querySelector(".title").style.fontSize = "30px";
+// document.querySelector(".user").value=""
+// document.querySelector(".pin").value=""
+userinput.value=pininput.value=""
+app.style.opacity=1
+dipalyMovements(currentaccount)
+displaybalance(currentaccount)
+displaysomme(currentaccount)
+}else if(!userinput.value && !pininput.value){
+  alert(" remplir les champs")
+ 
+}else{
+  alert("username or pin incorect")
+  userinput.value=pininput.value=""
+  
 }
-else{
-  displaymessage("vérifier votre données")
-}
+
 })
 
-const result=accounts.find((person)=>(person.username=="ms" && person.pin=="1111"))
-console.log(result)
+
+
+///////transfert amount
+btntransfert.addEventListener("click",function(event){
+  event.preventDefault()
+  const receiver=accounts.find((acc)=>acc.username===transfertuser.value)
+  const amount=Number(amountuser.value)
+  const balance=currentaccount.credit
+  if(balance>=amount && receiver && amount>0 && currentaccount.username !==receiver.username){
+    currentaccount.movements.push(-amount)
+    receiver.movements.push(amount)
+  }
+  transfertuser.value=amountuser.value=""
+dipalyMovements(currentaccount)
+displaybalance(currentaccount)
+displaysomme(currentaccount)
+})
+
+
+
+////// request amount
+btnamount.addEventListener("click",function(event){
+event.preventDefault()
+const valeur=Number(inputamount.value);
+if(valeur>0&&valeur&&currentaccount.movements.some((mov)=>mov/10>valeur)){
+  currentaccount.movements.push(valeur)
+}
+
+inputamount.value=""
+dipalyMovements(currentaccount)
+displaybalance(currentaccount)
+displaysomme(currentaccount)
+})
+
+
+////// close account
+btnclose.addEventListener("click",function(event){
+event.preventDefault()
+const closecompte=closeinput.value
+const confirmcompte=Number(confirminput.value)
+ if (
+    currentaccount.username === closecompte &&
+    currentaccount.pin === confirmcompte
+  ) {
+    const validation = confirm(
+      "are you sure !! you want to delete this account !!! ",
+    );
+    if (validation) {
+      const index = accounts.findIndex(
+        (obj) => obj.username === closecompte,
+      );
+      accounts.splice(index, 1);
+      app.style.opacity = 0;
+      welcome.textContent = "Log in to get started";
+      closeinput.value = confirminput.value = "";
+    }
+  } else {
+   closeinput.value = confirminput.value = "";
+    alert("userName or pin are wrong !!! please try again ...");
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////// indexof
+// const y=[1,2,3,4]
+// const res=y.indexOf(4)
+// console.log(res)
+
+
+// //////////
+// // findindex
+// const x=[1,2,3,4]
+// const result=x.findIndex((ele)=>ele<2)
+// console.log(result)
+
+///////includes
+// const x=[100,200,300,400]
+// const result=x.includes(300)
+// console.log(result);
+
+//////some
+// const x=[100,200,300,400]
+// const result=x.some((ele)=>ele>300)
+// console.log(result);
+
+//////every
+// const x=[100,200,300,400]
+// const result=x.every((ele)=>ele>200)
+// console.log(result);
+
+// /////in
+// const int=[5000, 3400, -150, -790, -3210, 1000, 8500, -30]
+// console.log(int)
+// const result1=int.filter((ele)=>ele>0).reduce((acc,ele)=>acc+ele,0)
+// console.log(result1)
+// somdep.textContent=`${result1} €`;
+
+
+// /////out
+// const out=[5000, 3400, -150, -790, -3210, 1000, 8500, -30]
+// console.log(out)
+// const result2=out.filter((ele)=>ele<0).reduce((acc,ele)=>acc+ele,0)
+// console.log(result2)
+// somwith.textContent=`${Math.abs(result2)} €`;
+
+
+
+// /////intersted
+// const intersted=[5000, 3400, -150, -790, -3210, 1000, 8500, -30]
+// console.log(intersted)
+// const result3=intersted.filter((ele)=>ele>0).map((deposit,i,arr)=>{
+//   console.log("comees from filter :" ,arr)
+//   return (deposit*1.5)/100
+// }).reduce((acc,ele ,i,arr)=>{
+//    console.log("comees from filter :" ,arr)
+//    return ele+acc 
+// },0)
+// console.log(result3)
+// somint.textContent=`${result3} €`;
+
+///tache faire
+// const displaymessage=function(message){
+// document.querySelector(".title").textContent=message
+// }
+// document.querySelector(".icon").addEventListener("click",function(){
+// var input1=document.querySelector(".text").value
+// var input2=document.querySelector(".number").value
+// if(!input1 && !input2){
+// displaymessage("not a text")
+// document.querySelector(".title").style.fontSize = "40px";
+// }else if(input1==account1.username && input2==account1.pin){
+// displaymessage("welcome Mark Shmedtman ")
+// document.querySelector(".title").style.fontSize = "40px";
+// }else if(input1==account2.username && input2==account2.pin){
+// displaymessage("welcome jessica davis ").style.fontSize = "70px";
+// }else if(input1==account3.username && input2==account3.pin){
+// displaymessage("welcome Park Thomas Williams ")
+// document.querySelector(".title").style.fontSize = "40px";
+// }else if(input1==account4.username && input2==account4.pin){
+// displaymessage("welcome Sarah Smith ")
+// document.querySelector(".title").style.fontSize = "40px";
+// }
+// else{
+//   displaymessage("vérifier votre données")
+// }
+// })
+// const result=accounts.find((person)=>(person.username=="ms" && person.pin=="1111"))
+// console.log(result)
 
 
 

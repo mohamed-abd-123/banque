@@ -224,3 +224,6 @@ footer{
 .tim{
     font-weight: bold;
 }
+main{
+    opacity: 0;
+}
